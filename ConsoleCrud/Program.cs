@@ -127,7 +127,13 @@ namespace ConsoleCrud
         }
         private static void CadastrarCliente()
         {
-
+            try
+            {
+                listasClientes.Add();
+            }catch(DomainException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
         private static void AlterarCliente()
         {

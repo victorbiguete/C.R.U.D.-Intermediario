@@ -1,10 +1,6 @@
 ﻿using ConsoleCrud.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using ConsoleCrud.Enums;
+using System.ComponentModel;
 namespace ConsoleCrud.Services
 {
     public abstract class Servicos
@@ -23,6 +19,8 @@ namespace ConsoleCrud.Services
 
         public static bool ValidarCPF(string cpf)
         {
+            if (string.IsNullOrWhiteSpace(cpf))
+                return false;
             // Remover caracteres não numéricos
             cpf = new string(cpf.Where(char.IsDigit).ToArray());
 
@@ -63,5 +61,13 @@ namespace ConsoleCrud.Services
             // Verificar se os dígitos calculados correspondem aos dígitos informados
             return cpf.EndsWith(digito1.ToString() + digito2.ToString());
         }
+
+        public static string GetDescription(Enum value)
+        {
+            var campo = value.GetType().GetField(value.ToString());
+            var atributo = (DescriptionAttribute)Attribute.GetCustomAttribute(campo, typeof(DescriptionAttribute));
+            return atributo == null ? value.ToString() : atributo.Description;
+        }
     }
+    
 }

@@ -15,10 +15,8 @@ namespace ConsoleCrud.Modals
         public int Id { get; set; }
         public string Cargo { get; private set; }
 
-        public Funcionario(string cargo, string name, string endereco, string cpf, string telefone) : base(name, endereco, cpf, telefone)
-        {
-            Cargo = cargo;
-        }
+        public Funcionario(string cargo, string name, string endereco, string cpf, string telefone) : base(name, endereco, cpf, telefone) => Cargo = cargo;
+        
 
         public static Funcionario Cadastrar()
         {

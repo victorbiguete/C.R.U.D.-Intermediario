@@ -14,9 +14,9 @@ namespace ConsoleCrud.Modals
         public string Telefone { get; protected set; }
 
 
-        protected Pessoa(string name, string endereco, string cpf, string telefone)
+        protected Pessoa(string nome, string endereco, string cpf, string telefone)
         {
-            Nome = name;
+            Nome = nome;
             Endereco = endereco;
             CPF = cpf;
             Telefone = telefone;
